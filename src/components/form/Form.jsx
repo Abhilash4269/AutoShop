@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-globals */
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import styles from "./Form.module.css";
