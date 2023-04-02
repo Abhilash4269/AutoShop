@@ -1,0 +1,19 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap'); */
+
+.Parent{
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 100px;
+    display: flex;
+    padding:20px;
+}
+
+.title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: "Monoton variant0", Tofu;    font-size:40px;
+    color: #e5970a;
+  font-style: normal;
+  font-weight: 400;
+}

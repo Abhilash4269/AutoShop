@@ -1,0 +1,16 @@
+.formParent{
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 40%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.parent{
+    padding: 40px;
+}
+
+.formField{
+    margin-bottom: 15px;
+}
