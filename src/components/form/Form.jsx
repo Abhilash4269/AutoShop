@@ -2,9 +2,19 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import styles from "./Form.module.css";
 import Button from "@mui/material/Button";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 const Form = () => {
-  const [userName, setUserName] = useState("");
+  const [userName, setUserName] = useState();
+  const [userNumber, setUserNumber] = useState();
+  const [userMake, setUserMake] = useState();
+  const [userModel, setUserModel] = useState();
+  const [userYear, setUserYear] = useState();
+  const [userAreaCode, setAreaCode] = useState();
+
+  const [obj, setObj] = useState({});
   const [error, setError] = useState(true);
 
   React.useEffect(() => {
@@ -15,48 +25,169 @@ const Form = () => {
     // console.log('name is saved',e.target.value)
   };
 
+  const submitForm = () => {
+    if (userName === undefined) {
+      toast.error("Enter your details", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+
+    if (
+      userName.length > 3 ||
+      userNumber.length > 9 ||
+      userMake.length > 2 ||
+      userModel.length > 1 ||
+      userYear.length > 1
+    ) {
+      const uObj = {
+        name: userName,
+        make: userMake,
+        model: userModel,
+        year: userYear,
+      };
+      console.log("dataSubmitted 😄");
+      // axios.post()
+      axios
+        .post("http://localhost:3000/cdata",uObj, {
+          headers: {
+            "Access-Control-Allow-Origin": "http://localhost:3001",
+            "Access-Control-Allow-Methods": "POST",
+          },
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      toast.success("Submitted Successfully", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } else {
+      toast.error("Please submit correct information", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+  };
+
   return (
     <div className={styles.parent}>
       <div className={styles.formParent}>
         <div className={styles.formField}>
           <TextField
-            id="formName"
+            id="FormName"
             label="Name"
             variant="outlined"
             required
             // error={error}
             onChange={() => {
               console.log(
-                document.getElementById("formName").value,
+                document.getElementById("FormName").value,
                 "///UserNmane////"
               );
-              setUserName(document.getElementById("formName").value);
-            //   document.getElementById("formName").value.length < 3
-            //     ? setError(true)
-            //     : setError(false);
+              setUserName(document.getElementById("FormName").value);
+              //   document.getElementById("formName").value.length < 3
+              //     ? setError(true)
+              //     : setError(false);
             }}
             // helperText={error ? "Name should be atleast of 3 characters" : ""}
           />
         </div>
         <div className={styles.formField}>
-          <TextField id="FormNumber" label="Phone Number" variant="outlined" />
+          <TextField
+            id="FormNumber"
+            label="Phone Number"
+            variant="outlined"
+            onChange={() => {
+              console.log(
+                document.getElementById("FormNumber").value,
+                "///Phone-Number////"
+              );
+              setUserNumber(document.getElementById("FormNumber").value);
+            }}
+          />
         </div>
         <div className={styles.formField}>
-          <TextField id="outlined-basic" label="Make" variant="outlined" />
+          <TextField
+            id="FormMake"
+            label="Make"
+            variant="outlined"
+            onChange={() => {
+              console.log(
+                document.getElementById("FormMake").value,
+                "///car-make////"
+              );
+              setUserMake(document.getElementById("FormMake").value);
+            }}
+          />
         </div>
         <div className={styles.formField}>
-          <TextField id="outlined-basic" label="Model" variant="outlined" />
+          <TextField
+            id="FormModel"
+            label="Model"
+            variant="outlined"
+            onChange={() => {
+              console.log(
+                document.getElementById("FormModel").value,
+                "///car-model////"
+              );
+              setUserModel(document.getElementById("FormModel").value);
+            }}
+          />
         </div>
         <div className={styles.formField}>
-          <TextField id="outlined-basic" label="Year" variant="outlined" />
+          <TextField
+            id="FormYear"
+            label="Year"
+            variant="outlined"
+            onChange={() => {
+              console.log(
+                document.getElementById("FormYear").value,
+                "///mfd-year////"
+              );
+              setUserYear(document.getElementById("FormYear").value);
+            }}
+          />
         </div>
         <div className={styles.formField}>
-          <TextField id="outlined-basic" label="ZipCode" variant="outlined" />
+          <TextField
+            id="FormZip"
+            label="ZipCode"
+            variant="outlined"
+            onChange={() => {
+              console.log(
+                document.getElementById("FormZip").value,
+                "///zip-code////"
+              );
+              setAreaCode(document.getElementById("FormZip").value);
+            }}
+          />
         </div>
-
-        
       </div>
-      <Button variant="contained">Submit</Button>
+      <Button variant="contained" onClick={() => submitForm()}>
+        Submit
+      </Button>
     </div>
   );
 };
