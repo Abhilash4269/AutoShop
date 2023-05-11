@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import Radio from "../radioGroup/RadioGroup"
 
 const Form = () => {
   const [userName, setUserName] = useState();
@@ -13,6 +14,7 @@ const Form = () => {
   const [userModel, setUserModel] = useState();
   const [userYear, setUserYear] = useState();
   const [userAreaCode, setAreaCode] = useState();
+  const [radioValue, setRadioValue] = React.useState();
 
   const [obj, setObj] = useState({});
   const [error, setError] = useState(true);
@@ -20,6 +22,11 @@ const Form = () => {
   React.useEffect(() => {
     console.log(userName, "////////UserName///////");
   }, [userName]);
+
+  React.useEffect(() => {
+    console.log(radioValue,'the radio vaalue');
+    if(radioValue){}
+  }, [radioValue])
 
   const saveName = (e) => {
     // console.log('name is saved',e.target.value)
@@ -40,17 +47,20 @@ const Form = () => {
     }
 
     if (
-      userName.length > 3 ||
-      userNumber.length > 9 ||
-      userMake.length > 2 ||
-      userModel.length > 1 ||
-      userYear.length > 1
+      userName.length > 3 &&
+      userNumber.length > 9 &&
+      userMake.length > 2 &&
+      userModel.length > 1 &&
+      userYear.length > 1 &&
+      radioValue.length > 0
     ) {
       const uObj = {
         name: userName,
         make: userMake,
         model: userModel,
         year: userYear,
+        number: userNumber,
+        type: radioValue
       };
       console.log("dataSubmitted 😄");
       // axios.post()
@@ -184,6 +194,7 @@ const Form = () => {
             }}
           />
         </div>
+        <Radio radioValue={radioValue} setRadioValue={setRadioValue}/>
       </div>
       <Button variant="contained" onClick={() => submitForm()}>
         Submit

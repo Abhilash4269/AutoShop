@@ -7,8 +7,8 @@ const Header = () => {
 
   return (
     <div className={styles.Parent}>
-        <img src={gears} alt='logo'/>
-        <div className={styles.title}>Golden AutoParts</div>
+        {/* <img src={gears} alt='logo'/>
+        <div className={styles.title}>Golden AutoParts</div> */}
     </div>
   )
 }
