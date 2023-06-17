@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import styles from "./Form.module.css";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import Radio from "../radioGroup/RadioGroup"
+import car from '../../assets/formulaCar.png'
+import './Form.css'
 
 const Form = () => {
   const [userName, setUserName] = useState();
@@ -123,6 +125,7 @@ const Form = () => {
             }}
             // helperText={error ? "Name should be atleast of 3 characters" : ""}
           />
+          {/* <input type="text"/> */}
         </div>
         <div className={styles.formField}>
           <TextField
@@ -196,9 +199,10 @@ const Form = () => {
         </div>
         <Radio radioValue={radioValue} setRadioValue={setRadioValue}/>
       </div>
-      <Button variant="contained" onClick={() => submitForm()}>
+      {/* <Button variant="contained" onClick={() => submitForm()}>
         Submit
-      </Button>
+      </Button> */}
+      <div className={styles.submitButton} onClick={() => submitForm()}>Submit</div>
     </div>
   );
 };

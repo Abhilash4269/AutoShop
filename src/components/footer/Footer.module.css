@@ -1,0 +1,15 @@
+.footerMain{
+    width: 100%;
+    background-color: black;
+    color: rgba(198, 155, 155, 0.567);
+    height: 30px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    font-family: sans-serif;
+}
+
+.footerMain:hover{
+    color:aliceblue;
+}

@@ -1,0 +1,39 @@
+ /* label{
+    color: aliceblue !important;
+} */
+
+#FormName-label{
+    color: aliceblue !important;
+}
+
+#FormNumber-label{
+    color: aliceblue !important;
+}
+
+#FormMake-label {
+    color: aliceblue !important;
+
+}
+#FormModel-label {
+    color: aliceblue !important;
+
+}
+
+#FormYear-label {
+    color: aliceblue !important;
+
+}
+
+#FormZip-label {
+    color: aliceblue !important;
+
+}
+
+.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+    color:  aliceblue !important;
+}
+
+
+/* label {
+    color: aliceblue !important;
+} */
